@@ -16,8 +16,8 @@ public class Main {
 		JLabel label=new JLabel(); // Create label
 		
 		label.setText("Do you love to code ?"); // Set text of label
-		label.setBackground(Color.pink);
-		label.setOpaque(true);
+		label.setBackground(Color.pink); // Set background color of label
+		label.setOpaque(true); // Make background color visible
 		ImageIcon labelImage=new ImageIcon("src/labels/Label_Image.png");
 		label.setIcon(labelImage);
 		label.setHorizontalTextPosition(JLabel.CENTER); // Set text LEFT, RIGHT, or CENTER of image icon horizontally
@@ -39,7 +39,7 @@ public class Main {
 		frame.setSize(800, 800);
 		frame.setVisible(true);
 		frame.setLayout(null);
-		frame.add(label);
+		frame.add(label); // Add label to frame
 	}
 	
 }
