@@ -16,7 +16,7 @@ public class MyFrame extends JFrame {
 		ImageIcon frameLogo=new ImageIcon("src/Images/Frame_Logo.png"); // Create image icon
 		this.setIconImage(frameLogo.getImage()); // Set icon of frame
 		
-		this.getContentPane().setBackground(new Color(173, 95, 157)); // Set background color of frame		
+		this.getContentPane().setBackground(new Color(173, 95, 157)); // Set background color of frame	
 	}
 	
 }
