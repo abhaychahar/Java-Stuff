@@ -7,8 +7,7 @@ import com.chess.engine.pieces.Piece;
 public abstract class Tile {
 
 	protected final int tileCoordinate;
-	
-	private static final Map<Integer, EmptyTile> emptyTiles=createAllPossibleEmptyTiles();
+	private static final Map<Integer, EmptyTile> emptyTilesCache=createAllPossibleEmptyTiles();
 	
 	private static Map<Integer, EmptyTile> createAllPossibleEmptyTiles() {
 		final Map<Integer, EmptyTile> emptyTileMap=new HashMap<>();
@@ -21,7 +20,7 @@ public abstract class Tile {
 	}
 	
 	public static Tile createTile(final int tileCoordinate, final Piece piece) {
-		return piece!=null ? new OccupiedTile(tileCoordinate, piece) : emptyTiles.get(tileCoordinate);
+		return piece!=null ? new OccupiedTile(tileCoordinate, piece) : emptyTilesCache.get(tileCoordinate);
 	}
 	
 	private Tile(int tileCoordinate) {
@@ -34,7 +33,7 @@ public abstract class Tile {
 
 	public static final class EmptyTile extends Tile {
 		
-		EmptyTile(int tileCoordinate) {
+		private EmptyTile(int tileCoordinate) {
 			super(tileCoordinate);
 		}
 		
@@ -54,7 +53,7 @@ public abstract class Tile {
 		
 		private final Piece pieceOnTile;
 		
-		OccupiedTile(int tileCoordinate, Piece pieceOnTile) {
+		private OccupiedTile(int tileCoordinate, Piece pieceOnTile) {
 			super(tileCoordinate);
 			this.pieceOnTile=pieceOnTile;
 		}
