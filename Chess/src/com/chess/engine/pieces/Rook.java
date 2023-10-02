@@ -1,24 +1,25 @@
 package com.chess.engine.pieces;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.ArrayList;
+
 import com.chess.engine.Alliance;
-import com.chess.engine.board.Move;
-import static com.chess.engine.board.Move.AttackMove;
-import static com.chess.engine.board.Move.MajorMove;
-import com.chess.engine.board.Tile;
 import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
+import com.chess.engine.board.Move;
+import com.chess.engine.board.Tile;
+import com.chess.engine.board.Move.AttackMove;
+import com.chess.engine.board.Move.MajorMove;
 
-public class Bishop extends Piece {
+public class Rook extends Piece {
 	
-	private final static int[] candidateMoveVectorCoordinates={-9, -7, 7, 9};
-	
-	Bishop(final int piecePosition, final Alliance pieceAlliance) {
+	private final static int[] candidateMoveVectorCoordinates={-8, -1, 1, 8};
+
+	Rook(int piecePosition, Alliance pieceAlliance) {
 		super(piecePosition, pieceAlliance);
 	}
-	
+
 	@Override
 	public Collection<Move> calculateLegalMoves(final Board board) {
 		final List<Move> legalMoves=new ArrayList<>();
@@ -52,11 +53,11 @@ public class Bishop extends Piece {
 	}
 	
 	private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset) {
-		return BoardUtils.firstColumn[currentPosition] && (candidateOffset==-9 || candidateOffset==7);
+		return BoardUtils.firstColumn[currentPosition] && (candidateOffset==-1);
 	}
 	
 	private static boolean isEighthColumnExclusion(final int currentPosition, final int candidateOffset) {
-		return BoardUtils.firstColumn[currentPosition] && (candidateOffset==-7 || candidateOffset==9);
+		return BoardUtils.firstColumn[currentPosition] && (candidateOffset==1);
 	}
-		
+	
 }
