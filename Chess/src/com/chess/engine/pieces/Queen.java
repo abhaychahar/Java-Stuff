@@ -26,14 +26,17 @@ public class Queen extends Piece {
 		
 		for(final int currentCandidateOffset: candidateMoveVectorCoordinates) {
 			int candidateDestinationCoordinate=this.piecePosition;
+			
 			while(BoardUtils.isValidCoordinate(candidateDestinationCoordinate)) {
 				if(isFirstColumnExclusion(candidateDestinationCoordinate, currentCandidateOffset) || isEighthColumnExclusion(candidateDestinationCoordinate, currentCandidateOffset)) {
 					break;
 				}
 				
 				candidateDestinationCoordinate+=currentCandidateOffset;
+				
 				if(BoardUtils.isValidCoordinate(candidateDestinationCoordinate)) {
 					final Tile candidateDestinationTile=board.getTile(candidateDestinationCoordinate);
+					
 					if(!candidateDestinationTile.isTileOccupied()) {
 						legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
 					}

@@ -24,12 +24,14 @@ public class Knight extends Piece {
 		
 		for(final int currentCandidateOffset: candidateMoveCoordinates) {
 			final int candidateDestinationCoordinate=this.piecePosition+currentCandidateOffset;
+			
 			if(BoardUtils.isValidCoordinate(candidateDestinationCoordinate)) {
 				if(isFirstColumnExclusion(this.piecePosition, currentCandidateOffset) || isSecondColumnExclusion(this.piecePosition, currentCandidateOffset) || isSeventhColumnExclusion(this.piecePosition, currentCandidateOffset) || isEighthColumnExclusion(this.piecePosition, currentCandidateOffset)) {
 					continue;
 				}
 				
 				final Tile candidateDestinationTile=board.getTile(candidateDestinationCoordinate);
+				
 				if(!candidateDestinationTile.isTileOccupied()) {
 					legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
 				}
